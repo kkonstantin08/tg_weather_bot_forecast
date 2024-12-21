@@ -2,7 +2,7 @@ import telebot
 from telebot import types
 import requests
 
-TOKEN = '6792505633:AAF9cgC6ZQ7BIBlHNbIVZuf5pDII-RRd6m4'
+TOKEN = 'YOUR_TOKEN'
 bot = telebot.TeleBot(TOKEN)
 BASE_URL = "https://api.open-meteo.com/v1/forecast"
 day = 0
@@ -18,7 +18,6 @@ DAYS = {
 def send_welcome(message):
     chat_id = message.chat.id
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
-    # item1 = types.KeyboardButton('Предоставить доступ✔', request_location=True)
     item1 = types.KeyboardButton('Сегодня')
     item2 = types.KeyboardButton('Завтра')
     item3 = types.KeyboardButton('Послезавтра')
@@ -60,8 +59,6 @@ def echo_message(message):
 @bot.message_handler(content_types=['location'])
 def handle_location(message):
     global day, day_in_words
-    # print("{0}, {1}".format(message.location.latitude,
-    #                         message.location.longitude))
     chat_id = message.chat.id
     latitude = message.location.latitude
     longitude = message.location.longitude
